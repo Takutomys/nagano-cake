@@ -11,11 +11,15 @@
   </thead>
   <% @items.each do |item| %>
    <tr>
-     <td><%= item.id %></td>
+     <td><%= link_to item.id, admin_item_path(item.id) %></td>
      <td><%= item.name %></td>
-     <td><%= item.price %></td>
+     <td><%= item.price.to_s(:delimited) %></td>
      <td><%= item.genre.name %></td>
-     <td><%= item.is_active %>
+     <td><% if item.is_active %>
+       　　販売中
+       　<% else %>
+       　 販売停止中
+       　<% end %>
      </td>
    </tr>
   <% end %>
