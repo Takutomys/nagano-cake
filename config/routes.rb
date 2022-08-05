@@ -11,7 +11,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     get '/' => "homes#top"
     get '/about' => "homes#about"
-  resources :customers, only: [:show, :edit, :update]
+  resources :customers, only: [:show, :edit, :update, :unsubscribe]
   end
 
   namespace :admin do
