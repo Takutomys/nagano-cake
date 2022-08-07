@@ -9,9 +9,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :public do
-    get '/' => "homes#top"
+        root to: "homes#top"
     get '/about' => "homes#about"
-  resources :customers, only: [:show, :edit, :update, :unsubscribe]
+    get 'customer/unsubscribe' => "customers#unsubscribe"
+    patch 'customer/withdraw' => "customers#withdraw"
+    resource :customer, only: [:show, :edit, :update, :unsubscribe, :withdraw]
   end
 
   namespace :admin do
