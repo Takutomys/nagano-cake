@@ -1,0 +1,21 @@
+<h2>商品一覧</h2>
+<table>
+ <% @items.each do |item| %>
+  <tr>
+   <td>
+   <% if item.image.attached? %>
+   <%= image_tag item.image, size: "100x100" %>
+   <% else %>
+   <%= image_tag 'no_image', size: "100x100" %>
+   <% end %>
+  </td>
+  </tr>
+  <tr>
+   <td><%= item.name %></td>
+  </tr>
+  <tr>
+  <td>￥<%= item.price.to_s(:delimited) %></td>
+  </tr>
+  <% end %>
+ </table
+

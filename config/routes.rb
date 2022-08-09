@@ -15,6 +15,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch 'customer/withdraw' => "customers#withdraw"
     resource :customer, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
   end
 
   namespace :admin do
