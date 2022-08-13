@@ -13,9 +13,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get '/about' => "homes#about"
     get 'customer/unsubscribe' => "customers#unsubscribe"
     patch 'customer/withdraw' => "customers#withdraw"
+    delete 'cart_items/destroy_all' => "cart_items#destroy_all"
+
     resource :customer, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
   end
 
   namespace :admin do
