@@ -7,4 +7,12 @@ class Order < ApplicationRecord
   def sum_of_total_payment
       total + shopping_cost
   end
+
+  def count_amount
+    total_amount = 0
+    order_details.each do |order_detail|
+      total_amount += order_detail.amount
+    end
+    total_amount
+  end
 end

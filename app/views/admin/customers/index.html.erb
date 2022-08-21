@@ -10,8 +10,8 @@
   </thead>
   <% @customers.each do |customer| %>
    <tr>
-     <td><%= link_to customer.id, admin_customer_path(customer.id) %></td>
-     <td><%= customer.last_name %><%= customer.first_name %></td>
+     <td><%= customer.id %></td>
+     <td><%= link_to customer.last_name+" "+customer.first_name, admin_customer_path(customer) %></td>
      <td><%= customer.email %></td>
      <td><% if customer.is_active %>
        　　有効
