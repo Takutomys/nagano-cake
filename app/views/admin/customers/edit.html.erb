@@ -1,5 +1,5 @@
 <h2><%= @customer.last_name+@customer.first_name %>さんの会員編集</h2>
-<%= form_with model: Customer.new, url: admin_customers_path do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
 <div class="field">
    <%= f.label :"会員ID" %>
    <%= @customer.id %>
@@ -52,6 +52,6 @@
   </div>
 
   <div class="button">
-    <%= f.submit '変更を保存' %>
+    <%= f.submit '変更を保存', class: "btn btn-secondary" %>
   </div>
 <% end %>

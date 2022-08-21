@@ -48,7 +48,6 @@ class Public::OrdersController < ApplicationController
 
   def index
     @order = Order.all
-
   end
 
   def show

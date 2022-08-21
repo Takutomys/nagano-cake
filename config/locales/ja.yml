@@ -12,6 +12,7 @@
           preparing: "発送準備中"
           shipped: "発送済み"
 
+      order_detail:
         making_status:
           impossible: "製作不可"
           waiting: "製作待ち"
