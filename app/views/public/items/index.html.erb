@@ -1,21 +1,23 @@
-<h2>商品一覧</h2>
-<table>
- <% @items.each do |item| %>
-  <tr>
-   <td>
-   <% if item.image.attached? %>
-   <%= image_tag item.image, size: "100x100" %>
-   <% else %>
-   <%= image_tag 'no_image', size: "100x100" %>
-   <% end %>
-  </td>
-  </tr>
-  <tr>
-   <td><%= link_to item.name, item_path(item) %></td>
-  </tr>
-  <tr>
-  <td>￥<%= item.price.to_s(:delimited) %></td>
-  </tr>
-  <% end %>
- </table>
+<div class="container">
+  <h2 class="mt-4">商品一覧</h2>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3">
+        <% if item.image.attached? %>
+          <%= image_tag item.image, size: "100x100" %><br>
+        <% else %>
+          <%= image_tag 'no_image', size: "100x100" %><br>
+        <% end %>
+        <%= link_to item.name, item_path(item) %><br>
+        ￥<%= item.price.to_s(:delimited) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-5 mt-5">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
+
 

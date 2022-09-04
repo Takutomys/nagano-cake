@@ -1,39 +1,39 @@
-<h4>マイページ</h4>
+<div class="container">
+  <h3 class="offset-1">マイページ</h3>
+  <div class="row mt-4">
+    <h4>登録情報</h4>
+    <p class="pl-5"><%= link_to "編集する", edit_customer_path, class: "btn btn-success" %></p>
+  </div>
+  <table class="table mt-3 table-bordered col-9">
+    <tbody>
+      <tr><td bgcolor="#cococo" width="30%">氏名</td>
+      <td  width="70%">><%= @customer.last_name+" "+@customer.first_name %></td></tr>
 
-<h4>登録情報</h4>
-<%= link_to "編集する", edit_customer_path, class: "btn btn-secondary" %>
+      <tr><td bgcolor="#cococo">カナ</td>
+      <td><%= @customer.last_name_kana+" "+@customer.first_name_kana %></td></tr>
 
-<table class="table table-hover table-inverse">
-  <tr>
-    <td>氏名</td>
-    <td><%= @customer.last_name+" "+@customer.first_name %></td>
-  </tr>
-  <tr>
-    <td>カナ</td>
-    <td><%= @customer.last_name_kana+" "+@customer.first_name_kana %></td>
-  </tr>
-  <tr>
-    <td>郵便番号</td>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
-</table>
+      <tr><td bgcolor="#cococo">郵便番号</td>
+      <td><%= @customer.postal_code %></td></tr>
 
-<h4>配送先</h4>
- <%= link_to '一覧を見る', addresses_path, class: "btn btn-secondary" %>
-<h4>注文履歴</h4>
- <%= link_to '一覧を見る', orders_path, class: "btn btn-secondary" %>
+      <tr><td bgcolor="#cococo">住所</td>
+      <td><%= @customer.address %></td></tr>
+
+      <tr><td bgcolor="#cococo">電話番号</td>
+      <td><%= @customer.telephone_number %></td></tr>
+
+      <tr><td bgcolor="#cococo">メールアドレス</td>
+      <td><%= @customer.email %></td></tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <h4 class="mt-1 col-2">配送先</h4>
+    <p class="pl-1"><%= link_to '一覧を見る', addresses_path, class: "btn btn-primary" %></p>
+  </div>
+  <div class="row">
+    <h4 class="mt-1 col-2">注文履歴</h4>
+    <p class="pl-1"><%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %></p>
+  </div>
+</div>
 
 
 
