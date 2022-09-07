@@ -3,12 +3,14 @@
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-md-3">
-        <% if item.image.attached? %>
-          <%= image_tag item.image, size: "100x100" %><br>
-        <% else %>
-          <%= image_tag 'no_image', size: "100x100" %><br>
+        <%= link_to item_path(item) do %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "100x100" %><br>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %><br>
+          <% end %>
         <% end %>
-        <%= link_to item.name, item_path(item) %><br>
+        <%= item.name %><br>
         ￥<%= item.price.to_s(:delimited) %>
       </div>
     <% end %>
