@@ -18,7 +18,11 @@
           <td><%= order.status_i18n %></td>
         </tr>
   　   <% end %>
-　   <%= paginate @orders %>
     </table>
   </div>
+  <div class="row">
+      <div class="col-md-6 offset-md-5 mt-5">
+        <%= paginate @orders %>
+      </div>
+    </div>
 </div>
