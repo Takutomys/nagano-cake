@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.shopping_cost = 800
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0){ |sum, item| sum + item.subtotal}
     if params[:order][:select_address]== "my_address"
        @order.postal_code = current_customer.postal_code
