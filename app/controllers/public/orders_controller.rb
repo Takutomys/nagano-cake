@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
     @order.shopping_cost = 800
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0){ |sum, item| sum + item.subtotal}
+    @order.total_payment = @total
     if params[:order][:select_address]== "my_address"
        @order.postal_code = current_customer.postal_code
        @order.address = current_customer.address
@@ -28,15 +29,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new(order_params)
-    order.customer_id = current_customer.id
-    order.shopping_cost = 800
-    @total = current_customer.cart_items.inject(0){ |sum, item| sum + item.subtotal}
-    order.total_payment = order.shopping_cost+@total
-    order.save
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.shopping_cost = 800
+    #@order.total_payment = @order.shopping_cost+@order.order_details.sum(&:subtotal)
+
+    @order.save
     current_customer.cart_items.each do |cart_item|
       order_detail = OrderDetail.new
-      order_detail.order_id = order.id
+      order_detail.order_id = @order.id
       order_detail.item_id = cart_item.item.id
       order_detail.amount = cart_item.amount
       order_detail.price = cart_item.item.with_tax_price
